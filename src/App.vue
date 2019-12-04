@@ -5,15 +5,17 @@
     <Todo />
     <Parent />
     <SwitchComponent />
+    <VSlot />
   </div>
 </template>
 
 <script>
 import Login from "./Login";
 import LifeCycle from "./Lifecycle";
-import Todo from "./Todo";
+import Todo from "./todo/Todo";
 import Parent from "./Emit/Parent";
 import SwitchComponent from "./switch/SwitchComponent";
+import VSlot from "./slot/VSlot";
 
 export default {
   components: {
@@ -21,7 +23,8 @@ export default {
     LifeCycle,
     Todo,
     Parent,
-    SwitchComponent
+    SwitchComponent,
+    VSlot
   },
   data: () => {
     return {};

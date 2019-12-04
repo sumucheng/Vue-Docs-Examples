@@ -4,16 +4,21 @@
     <form @submit.prevent="addTodo">
       <input class="addtodo" type="text" v-model="newTodo" placeholder="What needs to be done?" />
     </form>
-    <ul>
-      <li v-for="(item,index) in list" :key="index" :class="{completed: item.completed}">
-        <input class="toggle" type="checkbox" v-model="item.completed" />
-        <p>{{item.text}}</p>
-      </li>
-    </ul>
+    <TodoEvent :list="list">
+      <template #todoEvent="{ item }">
+        <span v-if="item.completed">✓</span>
+        <input v-else class="toggle" type="checkbox" v-model="item.completed" />
+        {{ item.text }}
+      </template>
+    </TodoEvent>
   </div>
 </template>
 <script>
+import TodoEvent from "./TodoEvent";
 export default {
+  components: {
+    TodoEvent
+  },
   data: () => {
     return {
       list: [],
@@ -41,30 +46,6 @@ export default {
   font-weight: 100;
   text-align: center;
 }
-.todo ul {
-  margin: 10px;
-  margin-top: 0px;
-  width: 80%;
-}
-.todo li {
-  line-height: 2.5em;
-  border-top: 1px solid #eee;
-}
-.todo .completed {
-  color: #ccc;
-}
-.todo p {
-  display: inline;
-  margin-left: 5px;
-}
-.todo li:last-child {
-  border-bottom: 1px solid #eee;
-}
-.todo .toggle {
-  position: relative;
-  top: 2px;
-}
-
 .todo form {
   width: 80%;
 }
@@ -72,5 +53,9 @@ export default {
   width: 100%;
   padding-left: 15px;
   height: 2.5em;
+}
+.todo span {
+  display: inline-block;
+  width: 12.8px;
 }
 </style>

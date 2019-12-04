@@ -1,53 +1,55 @@
 <template>
   <div id="app">
-    <div>
-      <p>{{msg}}</p>
-      <button v-on:click="reverse">反转</button>
-    </div>
-    <div>
-      <span v-bind:title="title">鼠标悬停几秒钟查看此处动态绑定的提示信息！</span>
-    </div>
-    <div>
-      <p v-if="seen">now you can see me</p>
-    </div>
-    <div>
-      <ol>
-        <li v-for="(todo,index) in todos" :key="index">{{ todo.text }}</li>
-      </ol>
-    </div>
-    <div>
-      <p>{{input}}</p>
-      <input v-model="input" />
-    </div>
-    <div>
-      <ol></ol>
-    </div>
+    <Login />
+    <LifeCycle />
+    <Todo />
+    <Parent />
+    <SwitchComponent />
   </div>
 </template>
 
 <script>
+import Login from "./Login";
+import LifeCycle from "./Lifecycle";
+import Todo from "./Todo";
+import Parent from "./Emit/Parent";
+import SwitchComponent from "./switch/SwitchComponent";
+
 export default {
-  data: () => {
-    return {
-      msg: "Welcome to Vue World",
-      title: "ok",
-      seen: true,
-      input: "1",
-      todos: [{ text: "1" }, { text: "2" }, { text: "3" }]
-    };
+  components: {
+    Login,
+    LifeCycle,
+    Todo,
+    Parent,
+    SwitchComponent
   },
-  methods: {
-    reverse() {
-      this.msg = this.msg
-        .split("")
-        .reverse()
-        .join("");
-    }
-  }
+  data: () => {
+    return {};
+  },
+  methods: {},
+  computed: {}
 };
 </script>
 
 <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+li {
+  list-style: none;
+}
 #app {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 10px;
+  flex-wrap: wrap;
+}
+#app > * {
+  border: 2px solid pink;
+  width: 30%;
+  min-height: 30vh;
+  margin-bottom: 15px;
 }
 </style>

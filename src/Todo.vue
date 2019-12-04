@@ -6,7 +6,7 @@
     </form>
     <ul>
       <li v-for="(item,index) in list" :key="index" :class="{completed: item.completed}">
-        <input class="toggle" type="checkbox" v-model="item.completed" @click="complete" />
+        <input class="toggle" type="checkbox" v-model="item.completed" />
         <p>{{item.text}}</p>
       </li>
     </ul>
@@ -24,9 +24,6 @@ export default {
     addTodo: function() {
       this.list.push({ text: this.newTodo, completed: false });
       this.newTodo = "";
-    },
-    complete: function() {
-      console.log(this.list);
     }
   }
 };

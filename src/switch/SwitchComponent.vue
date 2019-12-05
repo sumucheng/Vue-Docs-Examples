@@ -6,7 +6,12 @@
       @click="currentTab=tab"
       :class="['tabButton', { active: currentTab === tab }]"
     >{{tab}}</button>
-    <components :is="currentTab"></components>
+
+    <transition name="component-fade" mode="out-in">
+      <keep-alive>
+        <component :is="currentTab" class="tab"></component>
+      </keep-alive>
+    </transition>
   </div>
 </template>
 
@@ -29,6 +34,14 @@ export default {
 };
 </script>
 <style>
+.component-fade-enter-active,
+.component-fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.component-fade-enter, .component-fade-leave-to
+/* .component-fade-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+}
 .switch {
   padding: 3px;
 }

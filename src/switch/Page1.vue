@@ -1,16 +1,12 @@
 <template>
-  <div>
-    <p>主页</p>
-  </div>
+  <Blog />
 </template>
 
 <script>
+import Blog from "./Blog";
 export default {
-  data: () => {
-    return {};
-  },
-  methods: {}
+  components: {
+    Blog
+  }
 };
 </script>
-<style>
-</style>

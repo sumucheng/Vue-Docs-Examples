@@ -1,16 +1,3 @@
 <template>
-  <div>
-    <p>第三页</p>
-  </div>
+  <p>第三页</p>
 </template>
-
-<script>
-export default {
-  data: () => {
-    return {};
-  },
-  methods: {}
-};
-</script>
-<style>
-</style>
